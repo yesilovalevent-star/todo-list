@@ -12,19 +12,14 @@ import {
   orderBy,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ======================================================
-// Firebase config bilgilerini buraya yapıştır:
-// Firebase Console → Proje Ayarları → Web Uygulaması → firebaseConfig
-// ======================================================
 const firebaseConfig = {
-  apiKey: "BURAYA_API_KEY",
-  authDomain: "BURAYA_AUTH_DOMAIN",
-  projectId: "BURAYA_PROJECT_ID",
-  storageBucket: "BURAYA_STORAGE_BUCKET",
-  messagingSenderId: "BURAYA_MESSAGING_SENDER_ID",
-  appId: "BURAYA_APP_ID",
+  apiKey: "AIzaSyCWpWesU14oPZXDiRLZY_38rc0T51cu-6Q",
+  authDomain: "todo-list-ce81d.firebaseapp.com",
+  projectId: "todo-list-ce81d",
+  storageBucket: "todo-list-ce81d.firebasestorage.app",
+  messagingSenderId: "668008172876",
+  appId: "1:668008172876:web:7ed4df9e6aa292906693e9"
 };
-// ======================================================
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -33,12 +28,10 @@ const todosCol = collection(db, "todos");
 const todoInput = document.getElementById("todoInput");
 const todoList = document.getElementById("todoList");
 
-// Enter tuşuyla da ekleyebilsin
 todoInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addTodo();
 });
 
-// Firestore'dan gerçek zamanlı dinle
 const q = query(todosCol, orderBy("createdAt"));
 onSnapshot(q, (snapshot) => {
   todoList.innerHTML = "";
